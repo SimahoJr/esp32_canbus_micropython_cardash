@@ -1,4 +1,9 @@
 # ESP-WROOM-32 4MB
+
+# TODO
+    1. Add websocket
+    2. Test CAN on a car
+    
 # Create virtual environment and activate (for testing and intelisense)
     python3 -m venv venv
     . venv/bin/activate
