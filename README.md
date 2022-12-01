@@ -5,8 +5,8 @@
     pip install -r requirements.txt
 
 # RUN INSTALL.SH (bash install.sh)
-    download the firmware: https://github.com/nos86/micropython/releases/tag/esp32-can-driver-v2 (Find release)<br />
-    check: http://domoticx.com/esp8266-esptool-bootloader-communicatie/<br />
+    download the firmware: https://github.com/nos86/micropython/releases/tag/esp32-can-driver-v2 (Find release)
+    check: http://domoticx.com/esp8266-esptool-bootloader-communicatie/
 
 # MICROPYTHON SERVER
     microdot-->github search
