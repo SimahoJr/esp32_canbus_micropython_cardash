@@ -1,18 +1,18 @@
 # ESP-WROOM-32 4MB
 # Create virtual environment and activate (for testing and intelisense)
-python3 -m venv venv<br />
-. venv/bin/activate<br /><br />
-pip install -r requirements.txt<br />
+    python3 -m venv venv<br />
+    . venv/bin/activate<br /><br />
+    pip install -r requirements.txt<br />
 
 # RUN INSTALL.SH (bash install.sh)
-download the firmware: https://github.com/nos86/micropython/releases/tag/esp32-can-driver-v2 (Find release)<br />
-check: http://domoticx.com/esp8266-esptool-bootloader-communicatie/<br />
+    download the firmware: https://github.com/nos86/micropython/releases/tag/esp32-can-driver-v2 (Find release)<br />
+    check: http://domoticx.com/esp8266-esptool-bootloader-communicatie/<br />
 
-# SERVER: microdot-->github
+# SERVER: microdot-->github search
 
 # Install the required packages
-pip install esptool.py<br />
-pip install adafruit-ampy<br />
+    pip install esptool.py<br />
+    pip install adafruit-ampy<br />
 # HELP
     esptool.py --help<br />
     ampy --help<br />
