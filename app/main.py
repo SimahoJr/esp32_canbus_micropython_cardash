@@ -14,6 +14,8 @@ def static(request, path):
         return 'Not found', 404
     return send_file('static/' + path)
 
+
+
 @app.route('/data', methods=['GET', 'POST'])
 def data(req):
     if req.method == 'POST':

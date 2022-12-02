@@ -1,4 +1,6 @@
 # ESP-WROOM-32 4MB
+# Reduce file seze
+    to_mpy.py
 
 # TODO
     1. Add websocket
