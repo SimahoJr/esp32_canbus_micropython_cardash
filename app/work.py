@@ -2,7 +2,7 @@ from microdot import Microdot, Response, send_file
 from microdot_utemplate import render_template
 from can import *
 import _thread, time
-import json
+import ujson
 
 app = Microdot()
 Response.default_content_type = 'text/html'
@@ -35,10 +35,11 @@ def data(req):
     if req.method == 'POST':
         ret = {}
         for key, val in values:
-            _ret = sendAndCheck(can, key, hex(val), True)
+            # TODO: try catch
+            _ret = sendAndCheck(can, key, can_read_payload[key], True)
             ret[key] = _ret
-        json.dumps(ret), 200, {'Content-Type':'application/json'}
-    return json.dumps(can_values), 200, {'Content-Type':'application/json'}
+        ujson.dumps(ret), 200, {'Content-Type':'application/json'}
+    return ujson.dumps(can_values), 200, {'Content-Type':'application/json'}
 
 
 @app.route('/', methods=['GET', 'POST'])

@@ -198,10 +198,11 @@ xhr.onreadystatechange = function () {
     }
 };
 
-xhr.open('GET', "http://localhost:5000/data", true);
+var micro_url = window.location.href + "/data"
+xhr.open('GET', micro_url, true);
 var mdh = {"PID_ENGINE_TORQUE_PERCENTAGE": "0x62", "PID_ENGINE_REF_TORQUE": "0x63"}
 xhr.send(JSON.stringify(mdh));
-xhr.send(JSON.stringify(mdh));
-xhr.send(JSON.stringify(mdh));
-xhr.send(JSON.stringify(mdh));
-xhr.send(JSON.stringify(mdh));
+// xhr.send(JSON.stringify(mdh));
+// xhr.send(JSON.stringify(mdh));
+// xhr.send(JSON.stringify(mdh));
+// xhr.send(JSON.stringify(mdh));

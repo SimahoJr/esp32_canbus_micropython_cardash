@@ -3,7 +3,7 @@
     to_mpy.py (Crazy, Not proceeding with this, issues with versioning and doesn't save that much memory)
 
 # TODO
-    1. Add websocket
+    1. Add websocket/ Create a loop on js side
     2. Test CAN on a car
     
 # Create virtual environment and activate (for testing and intelisense)
