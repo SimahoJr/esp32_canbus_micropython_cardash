@@ -5,7 +5,23 @@ import _thread, time
 
 app = Microdot()
 Response.default_content_type = 'text/html'
+
 can_values = {}
+
+# Not a problem with more memory here
+@app.route('/svg/<path:path>')
+def svg(request, path):
+    def stream():
+        # TODO:Come back here for flash size
+        chunk_size = 2048
+        f = open("static/icons.svg", "r")
+        while True:
+            data = f.read(chunk_size)
+            if not data:
+                break
+            yield data
+            time.sleep(0.5)
+    return stream(), 200, {'Content-Type':'image/svg+xml'}
 
 @app.route('/static/<path:path>')
 def static(request, path):
