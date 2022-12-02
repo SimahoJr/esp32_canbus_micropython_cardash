@@ -1,6 +1,7 @@
 # Change port and possibly the paths
 # pwd
-folder_name="/mpy_app"
+# folder_name="/mpy_app"
+folder_name="/app"
 app_dir=$(pwd)
 firmware_dir+=$app_dir
 firmware_dir+="/bins/firmware.bin"
