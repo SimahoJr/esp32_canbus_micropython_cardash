@@ -198,7 +198,7 @@ xhr.onreadystatechange = function () {
     }
 };
 
-var micro_url = window.location.href + "/data"
+var micro_url = window.location.href + "data"
 xhr.open('GET', micro_url, true);
 var mdh = {"PID_ENGINE_TORQUE_PERCENTAGE": "0x62", "PID_ENGINE_REF_TORQUE": "0x63"}
 xhr.send(JSON.stringify(mdh));

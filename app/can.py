@@ -74,11 +74,11 @@ def sendAndCheck(dev, name, id, expectedLP = True):
         # print("{}: OK".format(name))
         if expectedLP:
             hey = dev.recv()
-            return True
-        return False
+            return hey
+        return None
     else:
         print("{}: FAILED".format(name))
-        return False
+        return None
 
 dev = CAN(0,
     extframe=False, 
@@ -143,5 +143,6 @@ def get_values():
             time.sleep(0.5)
         can_values = _can_values
         print(can_values)
+        print("\n")
         time.sleep(1)
 _thread.start_new_thread(get_values, ())
