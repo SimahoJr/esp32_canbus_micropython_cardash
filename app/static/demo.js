@@ -185,3 +185,23 @@ inputEngineFail.addEventListener('change', e => {
 });
 
 redraw();
+
+
+var xhr = new XMLHttpRequest();
+// we defined the xhr
+xhr.onreadystatechange = function () {
+    if (this.readyState != 4) return;
+
+    if (this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        console.log(data)
+    }
+};
+
+xhr.open('GET', "http://localhost:5000/data", true);
+var mdh = {"PID_ENGINE_TORQUE_PERCENTAGE": "0x62", "PID_ENGINE_REF_TORQUE": "0x63"}
+xhr.send(JSON.stringify(mdh));
+xhr.send(JSON.stringify(mdh));
+xhr.send(JSON.stringify(mdh));
+xhr.send(JSON.stringify(mdh));
+xhr.send(JSON.stringify(mdh));

@@ -2,11 +2,10 @@ from microdot import Microdot, Response, send_file
 from microdot_utemplate import render_template
 from can import *
 import _thread, time
+import json
 
 app = Microdot()
 Response.default_content_type = 'text/html'
-
-can_values = {}
 
 # Not a problem with more memory here
 @app.route('/svg/<path:path>')
@@ -32,10 +31,14 @@ def static(request, path):
 
 @app.route('/data', methods=['GET', 'POST'])
 def data(req):
+    values = req.get_json()
     if req.method == 'POST':
-        values = req.args.to_dict()
-        sendAndCheck(can, values, 0x102, True)
-    return can_values
+        ret = {}
+        for key, val in values:
+            _ret = sendAndCheck(can, key, hex(val), True)
+            ret[key] = _ret
+        json.dumps(ret), 200, {'Content-Type':'application/json'}
+    return json.dumps(can_values), 200, {'Content-Type':'application/json'}
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -44,11 +47,6 @@ def index(req):
     if req.method == 'POST':
         name = req.form.get('name')
     return render_template('index.html')
-
-def get_values():
-    while True:
-        time.sleep(1)
-_thread.start_new_thread(get_values, ())
 
 if __name__ == '__main__':
     print("server is running port 5000")
