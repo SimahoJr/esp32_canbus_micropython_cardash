@@ -38,7 +38,7 @@ def data(req):
             try:
                 _ret = sendAndCheck(key, int(val), True)
                 # TODO: str(_ret)
-                ret[key] = str(_ret)
+                ret[key] = _ret
             except Exception as e:
                 print("data ret", e)
             time.sleep(0.1)
