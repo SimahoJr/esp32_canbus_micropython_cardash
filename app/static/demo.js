@@ -249,4 +249,4 @@ fetch('/data', {
     body: JSON.stringify(mdh)
 })
 .then(response => response.json())
-.then(response => console.log(JSON.stringify(response)))
+.then(response => console.log(response))
