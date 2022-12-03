@@ -4,7 +4,7 @@
 
 # TODO
     1. Add websocket/ Create a loop on js side
-    2. Test CAN on a car
+    2. Test CAN on a car (CAN.NORMAL)
     
 # Create virtual environment and activate (for testing and intelisense)
     python3 -m venv venv
