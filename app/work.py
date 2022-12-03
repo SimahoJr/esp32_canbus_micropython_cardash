@@ -31,19 +31,21 @@ def static(request, path):
 
 @app.route('/data', methods=['GET', 'POST'])
 def data(req):
+    ret = {}
     try:
-        values = ujson.loads(req.body.decode("utf-8"))
-        print(values, req.body.decode("utf-8"), req.json)
-        ret = {}
-        for key, val in values:
-            # TODO: try catch
-            _ret = sendAndCheck(can, key, can_read_payload[key], True)
-            ret[key] = _ret
-        if len(ret) == 0:
-            ret = can_values
-        return ujson.dumps(ret)
-    except:
-        return ujson.dumps(can_values)
+        values = req.json
+        for key, val in values.items():
+            try:
+                _ret = sendAndCheck(key, int(val), True)
+                # TODO: str(_ret)
+                ret[key] = str(_ret)
+            except Exception as e:
+                print("data ret", e)
+            time.sleep(0.1)
+    except Exception as e:
+        print("data", e)
+    # print(ret)
+    return ret
 
 
 @app.route('/', methods=['GET', 'POST'])
