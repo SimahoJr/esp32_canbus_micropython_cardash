@@ -185,25 +185,3 @@ inputEngineFail.addEventListener('change', e => {
 });
 
 redraw();
-
-
-var xhr = new XMLHttpRequest();
-var micro_url = window.location.href + "data"
-xhr.open('GET', micro_url, true);
-xhr.setRequestHeader('Content-Type', 'application/json') 
-
-xhr.onreadystatechange = function () {
-    if (this.readyState != 4) return;
-
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        console.log(data)
-    }
-};
-
-var mdh = {"PID_ENGINE_TORQUE_PERCENTAGE": "0x62", "PID_ENGINE_REF_TORQUE": "0x63"}
-xhr.send(JSON.stringify(mdh));
-// xhr.send(JSON.stringify(mdh));
-// xhr.send(JSON.stringify(mdh));
-// xhr.send(JSON.stringify(mdh));
-// xhr.send(JSON.stringify(mdh));
