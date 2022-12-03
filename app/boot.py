@@ -8,7 +8,7 @@ except:
 import network
 
 import esp
-esp.osdebug(0)
+esp.osdebug(None)
 
 import gc
 gc.collect()

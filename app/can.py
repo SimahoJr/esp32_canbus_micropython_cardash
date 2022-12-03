@@ -78,12 +78,19 @@ def sendAndCheck(name, id, expectedLP = True):
     if dev.any() == expectedLP:
         # print("{}: OK".format(name))
         if expectedLP:
-            hey = dev.recv()
-            # TODO: These are just mock names on values
-            _id, is_extended, channel, data = hey
-            channel = channel
-            res = {"id":_id, "is_extended":is_extended, "channel":channel, "data":data }
-            return res
+            msg = dev.recv()
+            # TODO: These are just mock names on received values
+            # TODO: Take care of (nil) value from the recv()
+            msg = str(msg).replace("(nil)", "None").replace("(", "").replace(")", "")
+            msg = msg.split(",")
+            msg = tuple(msg)
+            try:
+                (_id, is_extended, channels, data) = msg
+                msg = {"id":eval(_id), "is_extended":eval(is_extended), "channels":eval(channels), "data":eval(data)}
+            except Exception as e:
+                print("send and check: ", e)
+                msg = str(msg)
+            return msg
         return {}
     else:
         print("{}: FAILED".format(name))
