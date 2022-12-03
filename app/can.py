@@ -79,11 +79,15 @@ def sendAndCheck(name, id, expectedLP = True):
         # print("{}: OK".format(name))
         if expectedLP:
             hey = dev.recv()
-            return hey
-        return "nil"
+            # TODO: These are just mock names on values
+            _id, is_extended, channel, data = hey
+            channel = channel
+            res = {"id":_id, "is_extended":is_extended, "channel":channel, "data":data }
+            return res
+        return {}
     else:
         print("{}: FAILED".format(name))
-        return "nil"
+        return {}
 
 # #Move to Extended
 # dev = CAN(0,
