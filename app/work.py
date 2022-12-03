@@ -31,7 +31,11 @@ def static(request, path):
 
 @app.route('/data', methods=['GET', 'POST'])
 def data(req):
-    values = req.get_json()
+    try:
+        print(req)
+        values = req.json()
+    except:
+        values = {}
     if req.method == 'POST':
         ret = {}
         for key, val in values:
