@@ -41,9 +41,9 @@ def data(req):
             ret[key] = _ret
         if len(ret) == 0:
             ret = can_values
-        return ujson.dumps(ret), 200, {'Content-Type':'application/json'}
+        return ujson.dumps(ret)
     except:
-        return ujson.dumps(can_values), 200, {'Content-Type':'application/json'}
+        return ujson.dumps(can_values)
 
 
 @app.route('/', methods=['GET', 'POST'])

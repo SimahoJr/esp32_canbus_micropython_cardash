@@ -7,6 +7,7 @@
 
 from machine import CAN
 import _thread, time
+import ujson as json
 
 can_values = {}
 
@@ -82,7 +83,7 @@ def sendAndCheck(dev, name, id, expectedLP = True):
 
 dev = CAN(0,
     extframe=False, 
-    mode=CAN.SILENT_LOOPBACK, 
+    mode=CAN.NORMAL, 
     baudrate=500, 
     tx_io=17,rx_io=16, auto_restart=False)
 
@@ -139,10 +140,17 @@ def get_values():
         for key, val in can_read_payload.items():
             # TODO: ??
             value = sendAndCheck(dev, key, val)
+            _can_values["Filter:" + key] = value
+            dev.setfilter(0, CAN.FILTER_ADDRESS, [0x101, 0])
+            value = sendAndCheck(dev, key, val)
+            _can_values["Filter 1:" + key] = value
+            dev.setfilter(0, CAN.FILTER_ADDRESS, [0x102, 0])
+            value = sendAndCheck(dev, key, val)
+            _can_values["Filter 2:" + key] = value
+            dev.clearfilter()
             _can_values[key] = value
-            time.sleep(0.5)
         can_values = _can_values
-        print(can_values)
+        print(json.dumps(can_values, indent=4))
         # print("\n")
         time.sleep(1)
 _thread.start_new_thread(get_values, ())
