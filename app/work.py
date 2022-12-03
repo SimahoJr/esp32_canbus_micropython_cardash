@@ -32,18 +32,18 @@ def static(request, path):
 @app.route('/data', methods=['GET', 'POST'])
 def data(req):
     try:
-        print(req)
-        values = req.json()
-    except:
-        values = {}
-    if req.method == 'POST':
+        values = ujson.loads(req.body.decode("utf-8"))
+        print(values, req.body.decode("utf-8"), req.json)
         ret = {}
         for key, val in values:
             # TODO: try catch
             _ret = sendAndCheck(can, key, can_read_payload[key], True)
             ret[key] = _ret
-        ujson.dumps(ret), 200, {'Content-Type':'application/json'}
-    return ujson.dumps(can_values), 200, {'Content-Type':'application/json'}
+        if len(ret) == 0:
+            ret = can_values
+        return ujson.dumps(ret), 200, {'Content-Type':'application/json'}
+    except:
+        return ujson.dumps(can_values), 200, {'Content-Type':'application/json'}
 
 
 @app.route('/', methods=['GET', 'POST'])

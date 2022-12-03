@@ -143,6 +143,6 @@ def get_values():
             time.sleep(0.5)
         can_values = _can_values
         print(can_values)
-        print("\n")
+        # print("\n")
         time.sleep(1)
 _thread.start_new_thread(get_values, ())
