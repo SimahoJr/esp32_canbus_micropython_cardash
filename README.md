@@ -1,5 +1,6 @@
 # ESP-WROOM-32 4MB
-# Reduce file seze
+<img src="Screenshot 2022.png" alt="CarDash" title="CarDash">
+# Reduce file size
     to_mpy.py (Crazy, Not proceeding with this, issues with versioning and doesn't save that much memory)
 
 # TODO
