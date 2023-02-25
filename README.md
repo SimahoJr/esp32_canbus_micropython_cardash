@@ -1,5 +1,6 @@
 # CARDASH
-    <img src="Screenshot 2022.png" alt="CarDash" title="CarDash">
+
+<img src="Screenshot 2022.png" alt="CarDash" title="CarDash">
 
 # ESP-WROOM-32 4MB
 
